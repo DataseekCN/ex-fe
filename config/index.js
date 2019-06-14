@@ -29,7 +29,15 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api_getShopInfo':{
+        target: 'https://openapi.etsy.com/v2',
+        changeOrigin: true,
+        pathRewrite:{
+          '^/api_getShopInfo': ''
+        }
+      }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

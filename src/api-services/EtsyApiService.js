@@ -1,11 +1,10 @@
 import Axios from 'axios';
 
-const API_ENDPOINT = 'https://openapi.etsy.com/v2';
 const API_KEY = '1lsoolvyaayk4ce4evshlabj';
 
 export default {
   getShop(shopName) {
-    return Axios.get(`${API_ENDPOINT}/shops/${shopName}?api_key=${API_KEY}`);
+    return Axios.get(`/api_getShopInfo/shops/${shopName}?api_key=${API_KEY}`);
   },
 
   // get(id) {
