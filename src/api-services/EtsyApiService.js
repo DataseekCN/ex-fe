@@ -8,7 +8,6 @@ export default {
     return Axios.get(`${API_ENDPOINT}/shops/${shopName}?api_key=${API_KEY}`);
   },
 
-  
   // get(id) {
   //   return Axios.get(`${API_ENDPOINT}/${id}`);
   // },
