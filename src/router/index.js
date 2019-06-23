@@ -4,6 +4,8 @@ import Login from '@/components/Login';
 import ResetPassword from '@/components/ResetPassword';
 import Dashboard from '@/components/Dashboard';
 import Connections from '@/components/Connections';
+import Signup from '@/components/Signup';
+import VerifyEmail from '@/components/VerifyEmail';
 
 Vue.use(Router);
 
@@ -15,15 +17,20 @@ export default new Router({
       name: 'Login',
       component: Login,
     },
-    // {
-    //   path: '/login',
-    //   name: 'Login',
-    //   component: Login,
-    // },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup,
+    },
     {
       path: '/resetpassword',
       name: 'ResetPassword',
       component: ResetPassword,
+    },
+    {
+      path: '/verifyemail',
+      name: 'VerifyEmail',
+      component: VerifyEmail,
     },
     {
       path: '/connections',

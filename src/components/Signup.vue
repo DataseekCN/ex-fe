@@ -2,7 +2,7 @@
   <div>
     <b-row>
       <b-card
-        title="Reset Passwords for EX Sync"
+        title="Sign Up to EX Sync "
         tag="article"
         style="max-width: 40rem;"
         class="mb-2 mx-auto"
@@ -18,8 +18,8 @@
             </b-col>
           </b-row>
         </b-container>
-        <b-button href="#" variant="secondary">Send Reset Link</b-button>
-        <b-button href="/" variant="danger">Cancel</b-button>
+        <b-button href="/verifyemail" variant="success">Sign up</b-button>
+        <b-button to="/" variant="danger">Cancel</b-button>
       </b-card>
     </b-row>
   </div>
@@ -27,11 +27,15 @@
 
 <script>
 export default {
-  name: 'login',
+  name: 'Signup',
   data() {
     return {
       types: [
-        'email',
+        'Email',
+        'First Name',
+        'Last Name',
+        'Password',
+        'Confirm Password',
       ],
     };
   },

@@ -2,24 +2,20 @@
   <div>
     <b-row>
       <b-card
-        title="Reset Passwords for EX Sync"
+        title="Verify Your Email"
         tag="article"
         style="max-width: 40rem;"
         class="mb-2 mx-auto"
         id="login-box"
       >
         <b-container fluid>
-          <b-row class="my-1" v-for="type in types" :key="type">
-            <b-col sm="4">
-              <label :for="`${type}`">{{ type }}:</label>
-            </b-col>
-            <b-col sm="8">
-              <b-form-input :id="`${type}`" :type="type"></b-form-input>
-            </b-col>
+          <b-row class="my-1">
+            <p>
+              Please go to your email address and click on verify my email link.
+            </p>
           </b-row>
         </b-container>
-        <b-button href="#" variant="secondary">Send Reset Link</b-button>
-        <b-button href="/" variant="danger">Cancel</b-button>
+        <b-button to="/connections" variant="danger">OK</b-button>
       </b-card>
     </b-row>
   </div>
@@ -27,11 +23,10 @@
 
 <script>
 export default {
-  name: 'login',
+  name: 'Signup',
   data() {
     return {
       types: [
-        'email',
       ],
     };
   },

@@ -2,7 +2,7 @@
   <div>
     <b-row>
       <b-card
-        title="XX Sync Login"
+        title="EX Sync Login"
         tag="article"
         style="max-width: 40rem;"
         class="mb-2 mx-auto"
@@ -18,12 +18,12 @@
             </b-col>
           </b-row>
         </b-container>
-        <b-button href="#" variant="primary">Login</b-button>
-        <b-button href="#" variant="secondary">Sign up</b-button>
+        <b-button href="#" variant="success">Login</b-button>
+        <b-button to="/signup" variant="secondary">Sign up</b-button>
       </b-card>
     </b-row>
     <b-row>
-      <a class="mx-auto" href="#">Reset Passwords</a>
+      <a class="mx-auto" href="/resetpassword">Reset Passwords</a>
     </b-row>
   </div>
 </template>
