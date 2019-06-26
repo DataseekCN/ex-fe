@@ -1,0 +1,13 @@
+dist: trusty
+language: node_js
+
+node_js:
+  - "statble"
+
+before_script:
+  - npm install
+script:
+  - npm run build
+
+notifications:
+  webhooks: https://oapi.dingtalk.com/robot/send?access_token=e3d4867ccbfd20c4724aa1e0e26751eb18ac2107a1ba92a7e6c3809e06841d07

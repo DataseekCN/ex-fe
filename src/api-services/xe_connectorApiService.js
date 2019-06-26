@@ -7,6 +7,17 @@ export default {
     return Axios.post(`${API_ENDPOINT}/user/signin`);
   },
 
+  userSignup() {
+    return Axios.post(`${API_ENDPOINT}/user/signup`);
+  },
+
+  userResetPassword() {
+    return Axios.post(`${API_ENDPOINT}/user/resetpassword`);
+  },
+
+  signupEmailVerification() {
+    return Axios.post(`${API_ENDPOINT}/user/signupemailverification`);
+  },
   // get(id) {
   //   return Axios.get(`${API_ENDPOINT}/${id}`);
   // },

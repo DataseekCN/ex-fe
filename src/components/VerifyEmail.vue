@@ -15,6 +15,7 @@
             </p>
           </b-row>
         </b-container>
+        <b-button to="/verifyemail" variant="secondary">Resend Email</b-button>
         <b-button to="/connections" variant="danger">OK</b-button>
       </b-card>
     </b-row>
