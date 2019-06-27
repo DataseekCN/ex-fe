@@ -2,6 +2,7 @@
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Build Status](https://travis-ci.org/DataseekCN/ex-fe.svg?branch=master)](https://travis-ci.org/DataseekCN/ex-fe)
+[![codebeat badge](https://codebeat.co/badges/a41e5ee1-f69b-491c-aef9-7340b9e751e8)](https://codebeat.co/projects/github-com-dataseekcn-ex-fe-master)
 
 > installation 
 
