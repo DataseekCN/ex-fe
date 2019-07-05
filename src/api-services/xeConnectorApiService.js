@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const API_ENDPOINT = 'https://XXXXX/api/';
+const API_ENDPOINT = 'https://etzy.com/api';
 
 export default {
   userSignin() {

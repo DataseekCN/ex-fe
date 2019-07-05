@@ -46,8 +46,6 @@
 <script>
 import NavBar from '@/components/NavBar';
 import SideBar from '@/components/SideBar';
-import EtsyApiService from '@/api-services/EtsyApiService';
-
 
 export default {
   name: 'Dashboard',
@@ -69,23 +67,6 @@ export default {
     };
   },
   methods: {
-    checkShop(event) {
-      if (event) {
-        this.isBusy = true;
-        EtsyApiService.getShop(this.form.inputShopName).then((response) => {
-          // eslint-disable-next-line
-          console.log(response.data);
-          this.items[0].shop_name = response.data.results[0].shop_name;
-          this.items[0].shop_id = response.data.results[0].shop_id.toString();
-          this.items[0].user_id = response.data.results[0].user_id.toString();
-          this.isBusy = false;
-        }).catch((error) => {
-          // eslint-disable-next-line
-          console.log(error.response);
-          this.isBusy = false;
-        });
-      }
-    },
   },
 };
 </script>

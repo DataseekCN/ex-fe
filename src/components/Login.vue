@@ -9,12 +9,16 @@
         id="login-box"
       >
         <b-container fluid>
+          <div class="alert alert-danger" role="alert" v-if="loginFailed">
+            Login failed, please try again. 
+          </div>
+
           <b-row class="my-1">
             <b-col sm="3">
               <label for="input-valid">Email: </label>
             </b-col>
             <b-col sm="9">
-              <b-form-input id="input-email" :state="none" placeholder="Your Email Address" v-model="form.email"></b-form-input>
+              <b-form-input id="input-email" placeholder="Your Email Address" v-model="form.email" required></b-form-input>
             </b-col>
           </b-row>
 
@@ -23,7 +27,7 @@
               <label for="input-invalid">Password:</label>
             </b-col>
             <b-col sm="9">
-              <b-form-input id="input-password" :state="none" v-model="form.password"></b-form-input>
+              <b-form-input id="input-password" v-model="form.password" required></b-form-input>
             </b-col>
           </b-row>
         </b-container>
@@ -38,6 +42,8 @@
 </template>
 
 <script>
+import xeConnectorApiService from '@/api-services/xeConnectorApiService';
+
 export default {
   name: 'login',
   data() {
@@ -46,6 +52,7 @@ export default {
         email: '',
         password: '',
       },
+      loginFailed: false,
     };
   },
   methods: {
@@ -53,6 +60,15 @@ export default {
       if (event) {
         // eslint-disable-next-line
         console.log(this.form);
+        xeConnectorApiService.userSignin(this.form).then((response) => {
+          // eslint-disable-next-line
+          console.log(response.data);
+          this.loginFailed = true;
+        }).catch((error) => {
+          // eslint-disable-next-line
+          console.log(error.data);
+          this.loginFailed = true;
+        });
       }
     },
   },
