@@ -9,17 +9,26 @@
         id="login-box"
       >
         <b-container fluid>
-          <b-row class="my-1" v-for="type in types" :key="type">
-            <b-col sm="4">
-              <label :for="`${type}`">{{ type }}:</label>
+          <b-row class="my-1">
+            <b-col sm="3">
+              <label for="input-valid">Email: </label>
             </b-col>
-            <b-col sm="8">
-              <b-form-input :id="`${type}`" :type="type"></b-form-input>
+            <b-col sm="9">
+              <b-form-input id="input-email" :state="none" placeholder="Your Email Address" v-model="form.email"></b-form-input>
+            </b-col>
+          </b-row>
+
+          <b-row class="my-1">
+            <b-col sm="3">
+              <label for="input-invalid">Password:</label>
+            </b-col>
+            <b-col sm="9">
+              <b-form-input id="input-password" :state="none" v-model="form.password"></b-form-input>
             </b-col>
           </b-row>
         </b-container>
-        <b-button href="#" variant="success">Login</b-button>
-        <b-button to="/signup" variant="secondary">Sign up</b-button>
+        <b-button id="signin-btn" href="#" variant="success" v-on:click="userSignin">Sign In</b-button>
+        <b-button id="signup-btn" to="/signup" variant="secondary">Sign Up</b-button>
       </b-card>
     </b-row>
     <b-row>
@@ -33,11 +42,19 @@ export default {
   name: 'login',
   data() {
     return {
-      types: [
-        'email',
-        'password',
-      ],
+      form: {
+        email: '',
+        password: '',
+      },
     };
+  },
+  methods: {
+    userSignin(event) {
+      if (event) {
+        // eslint-disable-next-line
+        console.log(this.form);
+      }
+    },
   },
 };
 </script>

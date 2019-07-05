@@ -6,10 +6,10 @@
     </b-col>
   </b-row>
   <b-row>
-    <b-col class="col-3">
+    <b-col class="col-auto">
       <SideBar/>
     </b-col>
-    <b-col>
+    <b-col class="col-9">
       <b-row>
         <b-card
           title="Your App"
@@ -17,7 +17,7 @@
           img-alt="Image"
           img-top
           tag="article"
-          style="max-width: 20rem;"
+          style="max-width: 14rem;"
           class="mb-2"
         >
           <b-card-text>
@@ -33,7 +33,7 @@
           img-alt="Image"
           img-top
           tag="article"
-          style="max-width: 20rem;"
+          style="max-width: 14rem;"
           class="mb-2"
         >
           <b-card-text>

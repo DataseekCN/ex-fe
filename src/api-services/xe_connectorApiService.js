@@ -16,7 +16,7 @@ export default {
   },
 
   signupEmailVerification() {
-    return Axios.post(`${API_ENDPOINT}/user/signupemailverification`);
+    return Axios.get(`${API_ENDPOINT}/user/signupemailverification`);
   },
   // get(id) {
   //   return Axios.get(`${API_ENDPOINT}/${id}`);

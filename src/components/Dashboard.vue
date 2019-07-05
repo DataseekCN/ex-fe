@@ -6,7 +6,7 @@
     </b-col>
   </b-row>
   <b-row>
-    <b-col class="col-3">
+    <b-col class="col-auto">
       <SideBar/>
     </b-col>
     <b-col class="col-9">
