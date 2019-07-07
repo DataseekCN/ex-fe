@@ -10,7 +10,7 @@
       >
         <b-container fluid>
           <div class="alert alert-danger" role="alert" v-if="loginFailed">
-            Login failed, please try again. 
+            {{ alertMessage }}
           </div>
 
           <b-row class="my-1">
@@ -53,6 +53,7 @@ export default {
         password: '',
       },
       loginFailed: false,
+      alertMessage: '',
     };
   },
   methods: {
@@ -63,10 +64,18 @@ export default {
         xeConnectorApiService.userSignin(this.form).then((response) => {
           // eslint-disable-next-line
           console.log(response.data);
-          this.loginFailed = true;
+          if (this.response.data.status === 'success' && this.response.data.user_session_id != null) {
+            // eslint-disable-next-line
+            console.log(response.data.status + '|' + response.data.user_session_id);
+            // todo: store session ID in cookie
+          } else {
+            this.alertMessage = this.response.data.error_message;
+            this.loginFailed = true;
+          }
         }).catch((error) => {
           // eslint-disable-next-line
           console.log(error.data);
+          this.alertMessage = 'Login failed due to backend issue.';
           this.loginFailed = true;
         });
       }
