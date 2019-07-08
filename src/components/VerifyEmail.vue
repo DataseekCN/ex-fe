@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'Signup',
+  name: 'VerifyEmail',
   data() {
     return {
       types: [
