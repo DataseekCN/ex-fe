@@ -101,6 +101,10 @@ export default {
           if (this.response.data.status === 'success' && this.response.data.user_id != null) {
             // eslint-disable-next-line
             console.log(response.data.status + '|' + response.data.user_id);
+
+            // stores the session_id in cookie
+            document.cookie = `${response.data.session_id}`;
+
             // redirect to verify email page
             this.$router.push('VerifyEmail');
           } else {

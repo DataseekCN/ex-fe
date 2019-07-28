@@ -6,6 +6,7 @@ import Dashboard from '@/components/Dashboard';
 import Connections from '@/components/Connections';
 import Signup from '@/components/Signup';
 import VerifyEmail from '@/components/VerifyEmail';
+import Setup from '@/components/Setup';
 
 Vue.use(Router);
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
+    },
+    {
+      path: '/setup',
+      name: 'Setup',
+      component: Setup,
     },
   ],
 });

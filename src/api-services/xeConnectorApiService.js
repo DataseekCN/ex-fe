@@ -3,29 +3,29 @@ import Axios from 'axios';
 const API_ENDPOINT = 'https://etzy.com/api';
 
 export default {
-  userSignin() {
-    return Axios.post(`${API_ENDPOINT}/user/signin`);
+  userSignin(data) {
+    return Axios.post(`${API_ENDPOINT}/user/signin`, data);
   },
 
-  userSignup() {
-    return Axios.post(`${API_ENDPOINT}/user/signup`);
+  userSignup(data) {
+    return Axios.post(`${API_ENDPOINT}/user/signup`, data);
   },
 
-  userResetPassword() {
-    return Axios.post(`${API_ENDPOINT}/user/resetpassword`);
+  userResetPassword(data) {
+    return Axios.post(`${API_ENDPOINT}/user/resetpassword`, data);
   },
 
-  signupEmailVerification() {
-    return Axios.get(`${API_ENDPOINT}/user/signupemailverification`);
+  signupEmailVerification(data) {
+    return Axios.get(`${API_ENDPOINT}/user/signupemailverification`, data);
   },
-  // get(id) {
-  //   return Axios.get(`${API_ENDPOINT}/${id}`);
-  // },
 
-  // create(data) {
-  //   return Axios.post(API_ENDPOINT, data);
-  // },
+  checkEtsyShopName(data) {
+    return Axios.post(`${API_ENDPOINT}/setup/etzy/verifyshopname`, data);
+  },
 
+  getXeroAccounts(data) {
+    return Axios.post(`${API_ENDPOINT}/setup/xero/accounts`, data);
+  },
   // update(id, data) {
   //   return Axios.put(`${API_ENDPOINT}/${id}`, data);
   // },

@@ -68,6 +68,7 @@ export default {
             // eslint-disable-next-line
             console.log(response.data.status + '|' + response.data.user_session_id);
             // todo: store session ID in cookie
+            this.$router.push('Dashboard');
           } else {
             this.alertMessage = this.response.data.error_message;
             this.loginFailed = true;

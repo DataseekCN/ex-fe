@@ -9,8 +9,8 @@
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
-          <template slot="button-content"><em>User Jenks Guo</em></template>
-          <b-dropdown-item href="#">Profile</b-dropdown-item>
+          <template slot="button-content"><em>Jenks Guo</em></template>
+          <!-- <b-dropdown-item href="#">Profile</b-dropdown-item> -->
           <b-dropdown-item href="#">Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
