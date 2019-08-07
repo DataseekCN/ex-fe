@@ -11,7 +11,7 @@
           <div class="alert alert-danger" role="alert" v-if="submitFailed">
             {{ alertMessage }}
           </div>
-
+          
           <div id="step1-connections" v-if="step === 1">
             <h1 class="display-3">Connnections</h1>
             <p class="lead">Connect your Etsy and Xero accounts to authorise EX Sync</p>
