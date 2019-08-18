@@ -134,8 +134,34 @@
                 </b-row>
 
                 <!-- sales accounts -->
+                <b-row class="my-3">
+                  <b-col class="col-3 text-right">
+                  <label for="select-xeroRevenueAccounts">Sales Account Mapping to Xero:</label>
+                  </b-col>
+                  <b-col class="col-6 text-left">
+                    <b-form-select v-model="form.xeroRevenueAccount" :options="xeroRevenueAccounts"></b-form-select>
+                  </b-col>
+                </b-row>
+
                 <!-- fees accounts -->
+                <b-row class="my-3">
+                  <b-col class="col-3 text-right">
+                  <label for="select-xeroExpenseAccounts">Fees Account Mapping to Xero:</label>
+                  </b-col>
+                  <b-col class="col-6 text-left">
+                    <b-form-select v-model="form.xeroExpenseAccount" :options="xeroExpenseAccounts"></b-form-select>
+                  </b-col>
+                </b-row>
+
                 <!-- shipping accounts -->
+                <b-row class="my-3">
+                  <b-col class="col-3 text-right">
+                  <label for="select-xeroShippingAccounts">Shipping Account Mapping to Xero:</label>
+                  </b-col>
+                  <b-col class="col-6 text-left">
+                    <b-form-select v-model="form.xeroShippingAccount" :options="xeroShippingAccounts"></b-form-select>
+                  </b-col>
+                </b-row>
 
                 <b-row class="my-3">
                   <b-col class="col-3 text-right">
@@ -271,9 +297,9 @@
           <div id="step4-billing" v-if="step === 4">
             <h1 class="display-3">Billing</h1>
             <p class="lead"></p>
-            <b-row class="justify-content-center">
-              <b-col class="col-12"></b-col>
-            </b-row>
+              <div class="container">
+                <cc/>
+              </div>
           </div>
 
           <div id="step5-complete" v-if="step === 5">
@@ -303,11 +329,13 @@
 <script>
 import NavBar from '@/components/NavBar';
 import xeConnectorApiService from '@/api-services/xeConnectorApiService';
+import cc from '@/components/CcPayments';
 
 export default {
   name: 'Setup',
   components: {
     NavBar,
+    cc,
   },
   data() {
     return {
@@ -316,6 +344,7 @@ export default {
       shopNameValid: null,
       etsyConnection: null,
       xeroConnection: true,
+      onnectionId: null,
       form: {
         etsyShopName: '',
         syncFromDate: '',
@@ -326,15 +355,10 @@ export default {
         listingInfoHandle: null,
         subscriptionPlan: '',
         backupOption: '',
-        ccName: '',
-        ccEmail: '',
-        ccCard: '',
-        ccExpDate: '',
-        ccCSV: '',
       },
-      xeroRevenueAccounts: [],
-      xeroExpenseAccounts: [],
-      xeroShippingAccounts: [],
+      xeroRevenueAccounts: ['200 - Sales', '201 - Other Sales'],
+      xeroExpenseAccounts: ['400 - Expsnes', '401 - Other Expense'],
+      xeroShippingAccounts: ['555 - Shipping', '501 - Other Shipping'],
       submitFailed: false,
       alertMessage: '',
     };
