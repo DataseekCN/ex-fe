@@ -28,6 +28,7 @@
                       btn-lg
                       btn-block
                       v-if="etsyConnection !== true"
+                      v-on:click="etsyAuthRedirect"
                     >Connect to Etsy</button>
                     <button
                       type="button"
@@ -64,7 +65,9 @@
                       btn-lg
                       btn-block
                       v-if="xeroConnection === true"
+                      href = "https://localhost:8080/"
                     >Connected</button>
+                    <a v-bind:href="etsyAuthRedirectUri">redirect</a>
                     <a class="text-success" v-if="xeroConnection === true">&#10004;</a>
                     <a class="text-danger" v-if="xeroConnection === false">&#10007;</a>                  </div>
                 </div>
@@ -339,6 +342,8 @@ export default {
   },
   data() {
     return {
+      app_account: { app_account: 'etsy@dataseek.info' },
+      etsyAuthRedirectUri: 'https://www.etsy.com/404',
       step: 1,
       steps: ['Connections', 'Setup', 'Subscription', 'Billing', 'Complete'],
       shopNameValid: null,
@@ -363,8 +368,17 @@ export default {
       alertMessage: '',
     };
   },
-  create: {
-
+  created() {
+    xeConnectorApiService.etsyTokenApply(this.app_account).then((response) => {
+      if (response.body.status === 'wait_authorize') {
+        this.etsyAuthRedirectUri = response.body.grant_url;
+      }
+      // eslint-disable-next-line
+      console.log(response.data);
+    }).catch((error) => {
+      // eslint-disable-next-line
+      console.log(error.data);
+    });
   },
   methods: {
     prev() {
@@ -401,6 +415,11 @@ export default {
     submitSetupForm(event) {
       if (event) {
         // xeConnectorApiService.submitSetupForm
+      }
+    },
+    etsyAuthRedirect(event) {
+      if (event) {
+        window.location.href = this.etsyAuthRedirectUri;
       }
     },
   },

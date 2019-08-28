@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const API_ENDPOINT = 'https://etzy.com/api';
+const API_ENDPOINT = 'https://47.101.53.114:12006';
 
 export default {
   userSignin(data) {
@@ -26,11 +26,12 @@ export default {
   getXeroAccounts(data) {
     return Axios.post(`${API_ENDPOINT}/setup/xero/accounts`, data);
   },
-  // update(id, data) {
-  //   return Axios.put(`${API_ENDPOINT}/${id}`, data);
-  // },
 
-  // delete(id) {
-  //   return Axios.delete(`${API_ENDPOINT}/${id}`);
-  // },
+  etsyTokenVerify(data) {
+    return Axios.post(`${API_ENDPOINT}/connections/etsy/token_verify`, data);
+  },
+
+  etsyTokenApply(data) {
+    return Axios.post(`${API_ENDPOINT}/connections/etsy/token_apply`, data);
+  },
 };
