@@ -33,9 +33,14 @@
           <div class="shop-table" v-for="shop in shop_lists" v-bind:key="shop.id">
             <!-- connecting relation-->
             <div class="shop-connection">
-              <div class="shop-name text-display">{{shop.shop_name}}</div>
+              <div class="shop-name text-display">
+                <img src="" />
+                {{shop.shop_name}}
+                </div>
               <div class="arrow"><i class="fa fa-long-arrow-right fa-3x" ></i></div>
-              <div class="xero-name text-display">{{shop.xero_name}}</div>
+              <div class="xero-name text-display">
+                <img src="" />
+                {{shop.xero_name}}</div>
             </div>
             <!-- single shop tax list -->
             <div id="content">
@@ -84,8 +89,8 @@ export default {
   data() {
     return {
       shop_lists: [
-        { id: 1, shop_name: 'shop01', xero_name: 'xero1' },
-        { id: 2, shop_name: 'shop02', xero_name: 'xero2' },
+        { id: 1, shop_name: 'shop01', xero_name: 'xero01' },
+        { id: 2, shop_name: 'shop02', xero_name: 'xero02' },
       ],
       summarys: [
         { id: 1, name: '派大星' },
@@ -168,7 +173,11 @@ export default {
   background-color: lightyellow;
   border-radius: 5px;
 }
-
+.text-display{
+  text-align: center;
+  font-size: 150%;
+  font-weight: bold;
+}
 .table-block{
   width: 60%;
   background-color: white;
