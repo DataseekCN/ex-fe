@@ -26,7 +26,7 @@ import Cookies from 'js-cookie';
 import xeConnectorApiService from '@/api-services/xeConnectorApiService';
 
 export default {
-  name: 'connctions',
+  name: 'connections',
   components: {
     NavBar,
     SideBar,
@@ -37,14 +37,14 @@ export default {
       // connection group information
       connections: [
         {
-          connection_id: 'uuid',
+          connection_id: 'id_121',
           etsy_shopname: 'devshop',
           xero_orgname: 'demo company',
           status: 'connected',
           last_connected: '08-04-2019',
         },
         {
-          connection_id: 'uuid',
+          connection_id: 'id_122',
           etsy_shopname: 'devshop',
           xero_orgname: 'demo company',
           status: 'connected',
@@ -63,7 +63,6 @@ export default {
       });
     },
   },
-  mounted: {},
 };
 </script>
 

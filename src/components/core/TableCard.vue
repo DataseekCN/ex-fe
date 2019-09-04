@@ -40,6 +40,7 @@
         </ul>
       </div>
     </div>
+  </div>
 </template>
 <script>
 // import xeConnectorApiService from '@/api-services/xeConnectorApiService';
@@ -47,12 +48,7 @@
 export default {
   name: 'TableCard',
   data() {
-    return {
-      shop: {
-        shop_name: '',
-        xero_name: '',
-      },
-    };
+    return {};
   },
   props: {
     shop: {
@@ -65,6 +61,10 @@ export default {
     },
     items: {
       type: Array,
+      required: true,
+    },
+    isBusy: {
+      type: Boolean,
       required: true,
     },
   },

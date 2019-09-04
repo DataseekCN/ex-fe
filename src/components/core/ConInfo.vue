@@ -4,8 +4,8 @@
       :key="info.connection_id"
       class="conn-group">
 
-      <my-card :imgUrl="2"
-        :title="Etsy"
+      <my-card :brand="dataForm.imgUrl"
+        :title="titles.EtsyTitle"
         :subTitle="info.etsy_shopname"
         :lastTime="info.last_connected"
         :status="info.status"
@@ -23,8 +23,8 @@
           <span> {{info.last_connected}}</span>
         </div>
       </div>
-      <my-card :imgUrl="2"
-        :title="Xero"
+      <my-card :brand="dataForm.imgUrl"
+        :title="titles.XeroTitle"
         :subTitle="info.xero_orgname"
         :lastTime="info.last_connected"
         :status="info.status"
@@ -32,12 +32,13 @@
     </b-row>
 
     <b-row class="conn-group">
-      <my-card :imgUrl="dataForm.imgUrl"
+      <my-card :brand="dataForm.imgUrl"
         :title="dataForm.title"
         :subTitle="dataForm.subTitle"
         :lastTime="dataForm.lastTime"
         :status="dataForm.status"
         class="col-4"></my-card>
+
       <div class="line"
         style="display:block">
         <div>
@@ -54,7 +55,8 @@
           <span> {{dataForm.bill}}</span>
         </div>
       </div>
-      <my-card :imgUrl="dataForm.imgUrl"
+
+      <my-card :brand="dataForm.imgUrl"
         :title="dataForm.title"
         :subTitle="dataForm.subTitle"
         :lastTime="dataForm.lastTime"
@@ -82,6 +84,10 @@ export default {
         lastTime: '08-04-2019',
         status: 'disconnected',
         bill: '+$10/month',
+      },
+      titles: {
+        EtsyTitle: 'Etsy',
+        XeroTitle: 'Xero',
       },
     };
   },

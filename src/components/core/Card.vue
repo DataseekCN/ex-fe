@@ -3,7 +3,7 @@
     class=""
     style="background:data.back_img">
     <img id="logo"
-      src="imgUrl" />
+      src="brand" />
     <div>
       <span id="title">{{title}}</span>
     </div>
@@ -34,7 +34,7 @@ export default {
     };
   },
   props: {
-    imgUrl: {
+    brand: {
       type: String,
       required: true,
     },

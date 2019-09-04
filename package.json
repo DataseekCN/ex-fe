@@ -19,7 +19,9 @@
     "bootstrap-vue": "^2.0.0-rc.25",
     "font-awesome": "^4.7.0",
     "js-cookie": "^2.2.1",
+    "pc-bootstrap4-datetimepicker": "^4.17.50",
     "vue": "^2.5.2",
+    "vue-bootstrap-datetimepicker": "^5.0.1",
     "vue-router": "^3.0.7"
   },
   "devDependencies": {
