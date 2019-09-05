@@ -14,7 +14,8 @@
         <div class="col-10 logs"
           v-for=" info in infos"
           v-bind:key="info.id">
-          <log :data="info"></log>
+          <log :data="info"
+            :errors="errors"></log>
         </div>
       </div>
     </b-row>
@@ -72,6 +73,7 @@ export default {
           isBusy: false,
         },
       ],
+      errors: [{ id: 1, text: '错误日志01' }, { id: 2, text: '错误日志02' }],
     };
   },
 };

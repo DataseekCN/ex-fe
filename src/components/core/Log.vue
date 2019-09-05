@@ -35,6 +35,7 @@
     <div id="log-table"
       class="log-table">
       <b-table id="shop-info-table"
+        style="z-index:-1;"
         hover
         small
         responsive
@@ -46,22 +47,24 @@
           <strong>Loading...</strong>
         </div>
       </b-table>
+      <!-- connect error logs -->
+      <error-log :data="logs"
+        :isDisplay="isDisplay"></error-log>
     </div>
-    <!-- connect error logs -->
-    <div id="error-log"
-      class="error-log">
-    </div>
+
   </div>
 </template>
 
 <script>
 // Import this component
 import datePicker from 'vue-bootstrap-datetimepicker';
+import ErrorLog from '@/components/core/ErrorLog';
 
 export default {
   name: 'Log',
   components: {
     datePicker,
+    ErrorLog,
   },
   data() {
     return {
@@ -71,6 +74,8 @@ export default {
         format: 'DD/MM/YYYY',
         useCurrent: false,
       },
+      isDisplay: false,
+      logs: [{ id: 1, text: ' 错误日志01' }, { id: 2, text: '错误日志02' }],
     };
   },
   props: {
@@ -78,15 +83,31 @@ export default {
       type: Object,
       required: true,
     },
+    errors: {
+      type: Array,
+      required: false,
+    },
   },
-  methods: {},
+  methods: {
+    init() {
+      if (this.errors !== undefined && this.errors.length > 0) {
+        // eslint-disable-next-line no-console
+        console.log(`errors 长度为 :${this.errors.length}`);
+        this.isDisplay = true;
+        this.logs = this.errors;
+      }
+    },
+  },
+  mounted() {
+    this.init();
+  },
 };
 </script>
 <style scoped>
 .log {
   width: 100%;
+  z-index: -1;
   margin: 20px 0px 10px 20px;
-
   display: inline-block;
   background-color: lightgray;
 }
@@ -129,6 +150,8 @@ export default {
 
 .log-table {
   width: 90%;
+  position: relative;
+  z-index: 1;
   margin: 80px 20px 20px 20px;
   background-color: aliceblue;
 }
