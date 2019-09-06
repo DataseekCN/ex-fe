@@ -43,6 +43,7 @@
 
 <script>
 import xeConnectorApiService from '@/api-services/xeConnectorApiService';
+import Cookies from 'js-cookie';
 
 export default {
   name: 'login',
@@ -68,6 +69,7 @@ export default {
             // eslint-disable-next-line
             console.log(response.data.status + '|' + response.data.user_session_id);
             // todo: store session ID in cookie
+            Cookies.set('ex_session_id', this.response.data.user_session_id);
             this.$router.push('Dashboard');
           } else {
             this.alertMessage = this.response.data.error_message;

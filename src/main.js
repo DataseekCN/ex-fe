@@ -5,12 +5,14 @@ import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Axios from 'axios';
+import Cookies from 'js-cookie';
 import App from './App';
 import router from './router';
 
 Vue.config.productionTip = false;
 
 Axios.defaults.baseURL = process.env.API_ENDPOINT;
+Cookies.set('ex_session_id', '');
 
 Vue.use(BootstrapVue);
 
