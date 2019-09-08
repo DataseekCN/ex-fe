@@ -108,4 +108,11 @@ export default {
   syncLog(data) {
     return Axios.post(`${API_ENDPOINT}/syncdata/log`, data);
   },
+
+  /* ********************Billing*************** */
+
+  // show bills
+  showBills(data) {
+    return Axios.post(`${API_ENDPOINT}/billing/showbills`, data);
+  },
 };

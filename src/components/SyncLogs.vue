@@ -87,6 +87,7 @@ export default {
         this.getSyncLog(data.connectionId, data.fromDate, data.toDate);
       }
     },
+
     getAllConnections() {
       const sessionId = Cookies.get('session_id');
       this.sessionId = sessionId;

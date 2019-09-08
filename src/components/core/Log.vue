@@ -94,7 +94,7 @@ export default {
     init() {
       if (this.errors !== undefined && this.errors.length > 0) {
         // eslint-disable-next-line no-console
-        console.log(`errors 长度为 :${this.errors.length}`);
+        console.log(`errors length is :${this.errors.length}`);
         this.isDisplay = true;
         this.logs = this.errors;
       }
@@ -102,6 +102,7 @@ export default {
         this.connectionId = this.data.get('connection_id');
       }
     },
+
     show() {
       this.$emit('show', {
         connectionId: this.connectionId,

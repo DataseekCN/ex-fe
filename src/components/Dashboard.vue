@@ -52,6 +52,8 @@
 import NavBar from '@/components/NavBar';
 import SideBar from '@/components/SideBar';
 import TableCard from '@/components/core/TableCard';
+import Cookies from 'js-cookie';
+// import xeConnectorApiService from '@/api-services/xeConnectorApiService';
 
 export default {
   name: 'Dashboard',
@@ -79,9 +81,25 @@ export default {
         inputShopName: '',
       },
       isBusy: false,
+      sessionId: '',
     };
   },
-  methods: {},
+  methods: {
+    init() {
+      this.sessionId = Cookies.get('session_id');
+    },
+
+    // showBills(){
+    //   xeConnectorApiService.showBills(this.sessionId).then((response) => {
+    //     if(response.status === '200'){
+
+    //     }
+    //   })
+    // }
+  },
+  mounted() {
+    this.init();
+  },
 };
 </script>
 
