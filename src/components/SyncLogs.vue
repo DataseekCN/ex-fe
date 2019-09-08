@@ -10,8 +10,8 @@
         <SideBar />
       </b-col>
       <div class="col-10"
-        style="margin-left:100px; margin-top:50px; text-align:center">
-        <div class="col-10 logs"
+        style="margin-left:50px; margin-top:20px; text-align:center">
+        <div class="col-12 logs"
           v-for=" info in infos"
           v-bind:key="info.id">
           <log :data="info"
@@ -80,6 +80,6 @@ export default {
 </script>
 <style scoped>
 .logs {
-  width: 70%;
+  width: 90%;
 }
 </style>
