@@ -28,7 +28,8 @@
       </div>
       <div style="float:right">
         <button id="show-btn"
-          class="show-btn">show</button>
+          class="show-btn"
+          @click="show">show</button>
       </div>
     </div>
     <!-- sync log details -->
@@ -68,6 +69,7 @@ export default {
   },
   data() {
     return {
+      connectionId: '',
       date01: new Date(),
       date02: new Date(),
       options: {
@@ -96,6 +98,16 @@ export default {
         this.isDisplay = true;
         this.logs = this.errors;
       }
+      if (this.data !== undefined && this.data.length > 0) {
+        this.connectionId = this.data.get('connection_id');
+      }
+    },
+    show() {
+      this.$emit('show', {
+        connectionId: this.connectionId,
+        fromDate: this.date01,
+        toDate: this.date02,
+      });
     },
   },
   mounted() {

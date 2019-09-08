@@ -65,11 +65,12 @@ export default {
     return Axios.post(`${API_ENDPOINT}/connections/xero/auth/url`, data);
   },
 
-  // 获取所有连接
+  // all connections
   getAllConnection(data) {
     return Axios.get(`${API_ENDPOINT}/connections/all`, data);
   },
 
+  /** ***********connection API****************** */
   // 用户数据和会计账号对接
   connectAccount(data) {
     return Axios.post(`${API_ENDPOINT}/connections/accountmapping`, data);
@@ -93,5 +94,18 @@ export default {
   // xero断连
   disconnectXero(data) {
     return Axios.post(`${API_ENDPOINT}/connections/xero/disconnect`, data);
+  },
+
+  /* *****************sync logs****************** */
+
+
+  // last five sync
+  recentFive(data) {
+    return Axios.post(`${API_ENDPOINT}/syncdata/recentfive`, data);
+  },
+
+  // sync logs
+  syncLog(data) {
+    return Axios.post(`${API_ENDPOINT}/syncdata/log`, data);
   },
 };
