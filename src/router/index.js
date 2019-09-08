@@ -8,6 +8,7 @@ import Signup from '@/components/Signup';
 import VerifyEmail from '@/components/VerifyEmail';
 import Setup from '@/components/Setup';
 import Backups from '@/components/Backups';
+import Settings from '@/components/Settings';
 
 Vue.use(Router);
 
@@ -53,6 +54,11 @@ export default new Router({
       path: '/backups',
       name: 'Backups',
       component: Backups,
+    },
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: Settings,
     },
   ],
 });

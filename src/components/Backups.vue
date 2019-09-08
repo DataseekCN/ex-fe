@@ -18,7 +18,10 @@
                 <b-row>
                   <label for="">Select your connection:</label>
                   <select class="form-control" id="connections">
-                    <option v-for="connection in connections" v-model="selected_shop_uuid">{{connection.etsy_shopname}} <--> {{connection.xero_orgname}}</option>
+                    <option
+                    v-for="connection in connections"
+                    v-model="selected_shop_uuid"
+                    >{{connection.etsy_shopname}} <--> {{connection.xero_orgname}}</option>
                   </select>
                 </b-row>
 
