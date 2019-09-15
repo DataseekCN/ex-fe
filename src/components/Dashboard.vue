@@ -32,15 +32,14 @@
             style="margin-left:60px">
             <!-- user reports tax lists-->
             <div class="shop-table"
-              v-for="shopInfos in shop_lists"
-              v-bind:key="shopInfos.id">
+              v-for="info in shop_lists"
+              v-bind:key="info.id">
               <!-- connecting relation-->
-              <table-card :shop="shopInfos.shop"
-                :summarys="shopInfos.summarys"
-                :items="shopInfos.items"
+              <table-card :shop="info.conn"
+                :summarys="info.summaryInfo"
+                :items="info.logs"
                 :isBusy="isBusy"></table-card>
             </div>
-
           </b-col>
         </b-row>
       </b-col>
@@ -53,7 +52,7 @@ import NavBar from '@/components/NavBar';
 import SideBar from '@/components/SideBar';
 import TableCard from '@/components/core/TableCard';
 import Cookies from 'js-cookie';
-// import xeConnectorApiService from '@/api-services/xeConnectorApiService';
+import xeConnectorApiService from '@/api-services/xeConnectorApiService';
 
 export default {
   name: 'Dashboard',
@@ -67,16 +66,49 @@ export default {
     return {
       shop_lists: [
         {
-          shop: { id: 1, shop_name: 'shop01', xero_name: 'xero01' },
-          summarys: [{ id: 1, name: '派大星' }, { id: 2, name: '章鱼哥' }],
-          items: [{ shop_name: '-', shop_id: '-', user_id: '-' }],
+          conn: {
+            connection_id: 1,
+            etsy_shopname: 'shop01',
+            xero_orgname: 'xero01',
+          },
+          logs: [
+            {
+              sync_id: '1',
+              title: 'Dark Floral',
+              desc: 'Pring of Dark Floral',
+              sku: 'DF-001',
+              transaction_id: '123456677',
+              xero_inv_id: '1111-2222-3333-4444-55555',
+              sync_status: 'success',
+              sync_time: '12/08/2019T12:00',
+              total: '123.00',
+            },
+            {
+              sync_id: '2',
+              title: 'Dark Floral',
+              desc: 'Pring of Dark Floral',
+              sku: 'DF-001',
+              transaction_id: '123456677',
+              xero_inv_id: '1111-2222-3333-4444-55555',
+              sync_status: 'success',
+              sync_time: '12/08/2019T12:00',
+              total: '123.00',
+            },
+          ],
+          summaryInfo: [
+            { id: 1, name: 'total_transactions_amount', num: 233231 },
+            { id: 2, name: 'total_transactions_number', num: 87 },
+            { id: 3, name: 'total_fees_amount', num: 6890 },
+            { id: 4, name: 'total_fees_number', num: 77 },
+          ],
         },
-        {
-          shop: { id: 1, shop_name: 'shop01', xero_name: 'xero01' },
-          summarys: [{ id: 1, name: '派大星' }, { id: 2, name: '章鱼哥' }],
-          items: [{ shop_name: '-', shop_id: '-', user_id: '-' }],
-        },
+        // {
+        //   shop: { id: 1, shop_name: 'shop01', xero_name: 'xero01' },
+        //   summarys: [{ id: 1, name: '派大星' }, { id: 2, name: '章鱼哥' }],
+        //   items: [{ shop_name: '-', shop_id: '-', user_id: '-' }],
+        // },
       ],
+      connections: [],
       form: {
         inputShopName: '',
       },
@@ -89,16 +121,61 @@ export default {
       this.sessionId = Cookies.get('session_id');
     },
 
-    // showBills(){
-    //   xeConnectorApiService.showBills(this.sessionId).then((response) => {
-    //     if(response.status === '200'){
+    getAllConnections() {
+      xeConnectorApiService.getAllConnections(this.sessionId).then((response) => {
+        if (response.status === '200') {
+          this.connections = response.connections;
+        }
+      });
+    },
 
-    //     }
-    //   })
-    // }
+    getRecentFive() {
+      let connection = null;
+      let details = null;
+      let summary = null;
+      if (this.connections.length > 0) {
+        const conns = this.connections;
+        conns.forEach((item) => {
+          const connId = item.get('connection_id');
+
+          xeConnectorApiService
+            .recentFive(this.sessionId, connId)
+            .then((response) => {
+              if (response.status === '200') {
+                // TODO assembly data
+                connection = item;
+                details = response.last_five_sync;
+              }
+            });
+          xeConnectorApiService
+            .summary(this.sessionId, connId)
+            .then((response) => {
+              if (response.status === '200') {
+                const tta = response.total_transactions_amount;
+                const ttn = response.total_transactions_number;
+                const tfa = response.total_fees_amount;
+                const tfn = response.total_fees_number;
+                summary = [
+                  { id: 1, name: 'total_transactions_amount', num: tta },
+                  { id: 2, name: 'total_transactions_number', num: ttn },
+                  { id: 3, name: 'total_fees_amount', num: tfa },
+                  { id: 4, name: 'total_fees_number', num: tfn },
+                ];
+              }
+            });
+          const array = {
+            conn: connection,
+            logs: details,
+            summaryInfo: summary,
+          };
+          this.shop_lists.push(array);
+        });
+      }
+    },
   },
   mounted() {
     this.init();
+    this.getRecentFive();
   },
 };
 </script>
@@ -175,7 +252,7 @@ export default {
   font-weight: bold;
 }
 .table-block {
-  width: 60%;
+  width: 80%;
   background-color: white;
   margin-right: 20px;
 }

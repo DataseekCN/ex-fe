@@ -4,12 +4,12 @@
     <div class="shop-connection">
       <div class="shop-name text-display">
         <img src="" />
-        {{shop.shop_name}}
+        {{shop.etsy_shopname}}
       </div>
       <div class="arrow"><i class="fa fa-long-arrow-right fa-3x"></i></div>
       <div class="xero-name text-display">
         <img src="" />
-        {{shop.xero_name}}</div>
+        {{shop.xero_orgname}}</div>
     </div>
     <!-- single shop tax list -->
     <div id="content">
@@ -35,7 +35,7 @@
             v-for="summary in summarys"
             v-bind:key="summary.id">
             <div class="s-msg">{{summary.name}}</div>
-            <button class="s-msg-num">32</button>
+            <button class="s-msg-num">{{summary.num}}</button>
           </li>
         </ul>
       </div>

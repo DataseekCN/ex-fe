@@ -41,36 +41,70 @@ export default {
       logs: [
         {
           id: '01',
-          shop_name: 'shop01',
-          xero_name: 'xero01',
+          conn: {
+            connection_id: 'uuid',
+            etsy_shopname: 'devshop',
+            xero_orgname: 'demo company',
+            status: 'connected',
+            last_connected: '08-04-2019',
+          },
           items: [
             {
-              Title: '-',
-              Description: '-',
-              SKU: '-',
-              Transaction: '-',
-              'Xero Invoke ID': '-',
-              'Sync Status': '-',
-              'Sync Time': '-',
-              Total: '-',
+              sync_id: '1',
+              title: 'Dark Floral',
+              desc: 'Pring of Dark Floral',
+              sku: 'DF-001',
+              transaction_id: '123456677',
+              xero_inv_id: '1111-2222-3333-4444-55555',
+              sync_status: 'success',
+              sync_time: '12/08/2019T12:00',
+              total: '123.00',
+            },
+            {
+              sync_id: '2',
+              title: 'Dark Floral',
+              desc: 'Pring of Dark Floral',
+              sku: 'DF-001',
+              transaction_id: '123456677',
+              xero_inv_id: '1111-2222-3333-4444-55555',
+              sync_status: 'success',
+              sync_time: '12/08/2019T12:00',
+              total: '123.00',
             },
           ],
           isBusy: false,
         },
         {
           id: '02',
-          shop_name: 'shop01',
-          xero_name: 'xero01',
+          conn: {
+            connection_id: 'uuid',
+            etsy_shopname: 'devshop',
+            xero_orgname: 'demo company',
+            status: 'connected',
+            last_connected: '08-04-2019',
+          },
           items: [
             {
-              Title: '-',
-              Description: '-',
-              SKU: '-',
-              Transaction: '-',
-              'Xero Invoke ID': '-',
-              'Sync Status': '-',
-              'Sync Time': '-',
-              Total: '-',
+              sync_id: '1',
+              title: 'Dark Floral',
+              desc: 'Pring of Dark Floral',
+              sku: 'DF-001',
+              transaction_id: '123456677',
+              xero_inv_id: '1111-2222-3333-4444-55555',
+              sync_status: 'success',
+              sync_time: '12/08/2019T12:00',
+              total: '123.00',
+            },
+            {
+              sync_id: '2',
+              title: 'Dark Floral',
+              desc: 'Pring of Dark Floral',
+              sku: 'DF-001',
+              transaction_id: '123456677',
+              xero_inv_id: '1111-2222-3333-4444-55555',
+              sync_status: 'success',
+              sync_time: '12/08/2019T12:00',
+              total: '123.00',
             },
           ],
           isBusy: false,
@@ -99,6 +133,7 @@ export default {
     },
 
     getRecentFive() {
+      let index = 0;
       if (this.connections.length > 0) {
         const conns = this.connections;
         conns.forEach((item) => {
@@ -108,6 +143,13 @@ export default {
             .then((response) => {
               if (response.status === '200') {
                 this.logs = response.last_five_sync;
+                const log = {
+                  id: (index += 1),
+                  conn: item,
+                  items: response.last_five_sync,
+                  isBusy: false,
+                };
+                this.logs.push(log);
               }
             });
         });

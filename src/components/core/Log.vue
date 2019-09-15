@@ -9,12 +9,12 @@
         class="connection">
         <div class="shop-name text-display">
           <img src="" />
-          {{data.shop_name}}
+          {{data.conn.etsy_shopname}}
         </div>
         <div class="arrow"><i class="fa fa-long-arrow-right fa-3x"></i></div>
         <div class="xero-name text-display">
           <img src="" />
-          {{data.xero_name}}
+          {{data.conn.xero_orgname}}
         </div>
       </div>
       <!-- time selection -->

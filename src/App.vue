@@ -18,10 +18,11 @@ export default {
 <style>
 body {
   margin: 0;
+  height: 100%;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -29,7 +30,7 @@ body {
 
 main {
   text-align: center;
-  font-family:'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   /* margin-top: 40px; */
 }
 
@@ -46,7 +47,7 @@ header span {
   position: relative;
   font-size: 20px;
   line-height: 1;
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
   font-weight: 400;
   box-sizing: border-box;
   padding-top: 16px;

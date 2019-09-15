@@ -115,4 +115,8 @@ export default {
   showBills(data) {
     return Axios.post(`${API_ENDPOINT}/billing/showbills`, data);
   },
+  // sync summary
+  summary(data) {
+    return Axios.post(`${API_ENDPOINT}/syncdata/summary`, data);
+  },
 };

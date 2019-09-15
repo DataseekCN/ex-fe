@@ -11,8 +11,8 @@
           class="list-group-item list-group-item-action bg-light">Setup</a>
         <a href="/SyncLogs"
           class="list-group-item list-group-item-action bg-light">SyncLogs</a>
-        <a href="#"
-          class="list-group-item list-group-item-action bg-light">-</a>
+        <a href="/Subscription"
+          class="list-group-item list-group-item-action bg-light">Subscription</a>
         <a href="#"
           class="list-group-item list-group-item-action bg-light">-</a>
         <a href="#"
@@ -34,5 +34,9 @@ export default {
 <style scoped>
 .border-right {
   background-color: darkseagreen;
+  height: 100%;
+}
+#wrapper {
+  height: 100%;
 }
 </style>

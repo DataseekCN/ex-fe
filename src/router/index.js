@@ -8,6 +8,8 @@ import Signup from '@/components/Signup';
 import VerifyEmail from '@/components/VerifyEmail';
 import Setup from '@/components/Setup';
 import SyncLogs from '@/components/SyncLogs';
+import Subscription from '@/components/Subscription';
+
 
 Vue.use(Router);
 
@@ -52,6 +54,11 @@ export default new Router({
     path: '/synclogs',
     name: 'SyncLogs',
     component: SyncLogs,
+  },
+  {
+    path: '/subscription',
+    name: 'Subscription',
+    component: Subscription,
   },
   ],
 });
