@@ -30,7 +30,7 @@
               <label :for="`type-${type}`">{{ label }}:</label>
             </b-col>
             <b-col sm="6">
-              <b-form-input :id="`type-${type}`" :type="type" v-model="form_outputs[label]"></b-form-input>
+              <b-form-input :id="`type-${type}`" :type="type" v-model="form_outputs[label]" :placeholder="current_settings[label]"></b-form-input>
             </b-col>
           </b-row>
         </b-container>
@@ -50,13 +50,13 @@
         </b-container>
       </b-row>
 
-      <b-row class="m-1">
-        <b-col class="m-1">
+      <b-row class="m-2">
+        <b-col-5 class="m-2">
           <button type="button" class="btn btn-primary btn-lg btn-block" v-on:click="output">Save</button>
-        </b-col>
-        <b-col class="m-1">
-          <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block">Cancel</button>
-        </b-col>
+        </b-col-5>
+        <b-col-5 class="m-2">
+          <button type="button" class="btn btn-primary btn-lg btn-block">Cancel</button>
+        </b-col-5>
       </b-row>
     </b-col>
   </b-row>
@@ -66,6 +66,8 @@
 <script>
 import NavBar from '@/components/NavBar';
 import SideBar from '@/components/SideBar';
+import xeConnectorApiService from '@/api-services/xeConnectorApiService';
+import Cookies from 'js-cookie';
 
 export default {
   name: 'Settings',
@@ -75,6 +77,12 @@ export default {
   },
   data() {
     return {
+      current_settings: {
+        Name: 'null name',
+        Company: 'null company',
+        Country: 'null Country',
+        Email: 'null Email',
+      },
       form_inputs: {
         Name: 'text',
         Company: 'text',
@@ -100,17 +108,44 @@ export default {
     };
   },
   created() {
-
+    xeConnectorApiService.getSettings({ session_id: Cookies.get('name') }).then((response) => {
+      this.current_settings.Name = response.body.current_settings.Name;
+      this.current_settings.Company = response.body.current_settings.Company;
+      this.current_settings.Country = response.body.current_settings.Country;
+      this.current_settings.Email = response.body.current_settings.Email;
+    }).catch((error) => {
+      // eslint-disable-next-line
+      console.log(error);
+    });
   },
   methods: {
     output(event) {
+      const changePssswordRequest = {
+        session_id: Cookies.get('name'),
+        old_passwords: this.newpasswords_outputs.Old,
+        new_passwords: this.newpasswords_outputs.Old,
+      };
+
       if (event) {
-        // eslint-disable-next-line
-        console.log(this.form_outputs)
-        // eslint-disable-next-line
-        console.log('--------------------')
-        // eslint-disable-next-line
-        console.log(this.newpasswords_outputs)
+        xeConnectorApiService.userUpdateSettings(this.form_outputs).then((response) => {
+          // eslint-disable-next-line
+          console.log(response);
+          this.$router.go();
+        }).catch((error) => {
+          // eslint-disable-next-line
+          console.log(error); 
+        });
+
+        if (this.newpasswords_outputs.New === this.newpasswords_outputs.Confirm &&
+        this.newpasswords_outputs.New !== this.newpasswords_outputs.Old) {
+          xeConnectorApiService.userChangePassword(changePssswordRequest).then((response) => {
+            // eslint-disable-next-line
+            console.log(response);
+          }).catch((error) => {
+            // eslint-disable-next-line
+            console.log(error); 
+          });
+        }
       }
     },
   },

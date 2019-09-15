@@ -77,8 +77,8 @@
 <script>
 import NavBar from '@/components/NavBar';
 import SideBar from '@/components/SideBar';
-import Cookies from 'js-cookie';
 import xeConnectorApiService from '@/api-services/xeConnectorApiService';
+import Cookies from 'js-cookie';
 
 export default {
   name: 'Backups',
