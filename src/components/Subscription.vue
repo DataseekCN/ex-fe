@@ -22,31 +22,62 @@
               :isCurrent="info.isSubsc"></tip>
           </div>
         </div>
-      </div>
-      <div class="col-10 row"
-        style="margin-left:50px; margin-top:20px; text-align:center">
-        <div class="col-5">
-          <div>
-            <div class="row">
-              <p>Backup rolling data of 1 year</p>
+        <div class="col-12  backup">
+          <div class="col-5 backup-tab">
+            <div class="col-8 ">
+              <div class="row">
+                <h4>Backup rolling data of 1 year</h4>
+              </div>
+              <div class="row">
+                <p style="margin-top:15px;">$10/year</p>
+                <button class="btn ">Addon</button>
+              </div>
             </div>
-            <div class="row">
-              <p>$10/year</p>
-              <button class="btn ">Addon</button>
+          </div>
+          <div class="col-5 backup-tab">
+            <div class="col-8"
+              style="float:right;">
+              <div class="row">
+                <h4>Backup rolling data of 1 year</h4>
+              </div>
+              <div class="row">
+                <p style="margin-top:15px;">$10/year</p>
+                <button class="btn ">Addon</button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-5">
-          <div>
-            <div class="row">
-              <p>Backup rolling data of 1 year</p>
-            </div>
-            <div class="row">
-              <p>$10/year</p>
-              <button class="btn ">Addon</button>
-            </div>
+        <div class="col-12 tabs">
+          <div class="tab col-10">
+            <b-table id="table "
+              bordered
+              small
+              responsive
+              :items="comingBills"
+              :busy="isBusy">
+              <div slot="table-busy"
+                class="text-center text-danger my-2">
+                <b-spinner class="align-middle"></b-spinner>
+                <strong>Loading...</strong>
+              </div>
+            </b-table>
+          </div>
+          <div class="tab col-10">
+            <b-table id="table table-bordered"
+              bordered
+              small
+              responsive
+              :items="pastBills"
+              :busy="isBusy">
+              <div slot="table-busy"
+                class="text-center text-danger my-2">
+                <b-spinner class="align-middle"></b-spinner>
+                <strong>Loading...</strong>
+              </div>
+            </b-table>
           </div>
         </div>
+
       </div>
     </b-row>
 
@@ -94,6 +125,27 @@ export default {
           isSubsc: false,
         },
       ],
+      comingBills: [
+        {
+          Description: '-',
+          Period: '-',
+          Amount: '-',
+          'Due Date': '',
+          Status: '',
+          Action: '-',
+        },
+      ],
+      pastBills: [
+        {
+          Description: '-',
+          Period: '-',
+          Amount: '-',
+          'Due Date': '',
+          Status: '',
+          Action: '-',
+        },
+      ],
+      isBusy: false,
     };
   },
   methods: {
@@ -111,5 +163,33 @@ export default {
 .p {
   background-color: lightgray;
   margin: 10px 20px 10px 20px;
+}
+.backup {
+  display: inline-flex;
+  margin: 0px 0px 20px 0px;
+}
+.backup-tab {
+  margin: 10px 0px 10px 0px;
+}
+.backup-tab div {
+  text-align: center;
+  background-color: lightgray;
+  margin: 10px 10px 10px 0px;
+  padding: 10px 0px 10px 0px;
+}
+.backup-tab .row {
+  margin-left: 50px;
+}
+.backup-tab button {
+  float: right;
+  margin-left: 120px;
+  background-color: cadetblue;
+}
+.tabs {
+  margin-top: 20px;
+}
+b-table {
+  /* margin: 30px 50px 30px 30px; */
+  border: 1px solid black;
 }
 </style>

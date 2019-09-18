@@ -18,7 +18,7 @@ export default {
 <style>
 body {
   margin: 0;
-  height: 100%;
+  /* height: 100%; */
 }
 
 #app {
@@ -31,6 +31,7 @@ body {
 main {
   text-align: center;
   font-family: "Times New Roman", Times, serif;
+  /* overflow: auto; */
   /* margin-top: 40px; */
 }
 
