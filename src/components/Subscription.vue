@@ -88,6 +88,7 @@ import NavBar from '@/components/NavBar';
 import SideBar from '@/components/SideBar';
 import Tip from '@/components/core/Tip';
 import Cookies from 'js-cookie';
+import xeConnectorApiService from '@/api-services/xeConnectorApiService';
 
 export default {
   name: 'Subscription',
@@ -95,6 +96,7 @@ export default {
     NavBar,
     SideBar,
     Tip,
+    xeConnectorApiService,
   },
   data() {
     return {
@@ -152,8 +154,19 @@ export default {
     init() {
       this.sessionId = Cookies.get('session_id');
     },
+    getBills() {
+      xeConnectorApiService.showBills(this.sessionId).then((response) => {
+        if (response.Status === '200') {
+          this.comingBills = response.future_bills;
+          this.pastBills = response.past_bills;
+        }
+      });
+    },
   },
-  mounted() {},
+  mounted() {
+    this.init();
+    this.getBills();
+  },
 };
 </script>
 <style scoped>

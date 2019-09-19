@@ -119,4 +119,10 @@ export default {
   summary(data) {
     return Axios.post(`${API_ENDPOINT}/syncdata/summary`, data);
   },
+
+  // billing plan
+  planBills(data) {
+    return Axios.post(`${API_ENDPOINT}/billing/plan`, data);
+  },
+
 };
