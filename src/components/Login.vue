@@ -96,15 +96,15 @@ export default {
             // eslint-disable-next-line
             console.log(response.data);
             if (
-              this.response.data.status === 'success' &&
-              this.response.data.user_session_id != null
+              response.data.status === 'success' &&
+              response.data.user_session_id != null
             ) {
               // eslint-disable-next-line
               console.log(
                 `${response.data.status}|${response.data.user_session_id}`,
               );
               // todo: store session ID in cookie
-              Cookies.set('session_id', this.response.data.user_session_id);
+              Cookies.set('session_id', response.data.user_session_id);
               this.$router.push('Dashboard');
             } else {
               this.alertMessage = this.response.data.error_message;

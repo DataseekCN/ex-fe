@@ -102,11 +102,6 @@ export default {
             { id: 4, name: 'total_fees_number', num: 77 },
           ],
         },
-        // {
-        //   shop: { id: 1, shop_name: 'shop01', xero_name: 'xero01' },
-        //   summarys: [{ id: 1, name: '派大星' }, { id: 2, name: '章鱼哥' }],
-        //   items: [{ shop_name: '-', shop_id: '-', user_id: '-' }],
-        // },
       ],
       connections: [],
       form: {
@@ -122,7 +117,8 @@ export default {
     },
 
     getAllConnections() {
-      xeConnectorApiService.getAllConnections(this.sessionId).then((response) => {
+      debugger;
+      xeConnectorApiService.getAllConnection(this.sessionId).then((response) => {
         if (response.status === '200') {
           this.connections = response.connections;
         }
@@ -130,6 +126,7 @@ export default {
     },
 
     getRecentFive() {
+      debugger;
       let connection = null;
       let details = null;
       let summary = null;
@@ -147,6 +144,7 @@ export default {
                 details = response.last_five_sync;
               }
             });
+
           xeConnectorApiService
             .summary(this.sessionId, connId)
             .then((response) => {
@@ -175,6 +173,7 @@ export default {
   },
   mounted() {
     this.init();
+    this.getAllConnections();
     this.getRecentFive();
   },
 };
