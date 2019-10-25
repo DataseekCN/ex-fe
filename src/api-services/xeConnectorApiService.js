@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const API_ENDPOINT = 'https://47.101.53.114:12006';
+const API_ENDPOINT = 'http://13.236.146.10:12006';
 
 export default {
   userSignin(data) {
