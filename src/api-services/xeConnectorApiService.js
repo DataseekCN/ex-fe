@@ -15,6 +15,10 @@ export default {
     return Axios.post(`${API_ENDPOINT}/user/resetpassword`, data);
   },
 
+  userChangePassword(data) {
+    return Axios.post(`${API_ENDPOINT}/user/changepassword`, data);
+  },
+
   signupEmailVerification(data) {
     return Axios.get(`${API_ENDPOINT}/user/signupemailverification`, data);
   },
@@ -26,11 +30,24 @@ export default {
   getXeroAccounts(data) {
     return Axios.post(`${API_ENDPOINT}/setup/xero/accounts`, data);
   },
-  // update(id, data) {
-  //   return Axios.put(`${API_ENDPOINT}/${id}`, data);
-  // },
 
-  // delete(id) {
-  //   return Axios.delete(`${API_ENDPOINT}/${id}`);
-  // },
+  etsyTokenVerify(data) {
+    return Axios.post(`${API_ENDPOINT}/connections/etsy/token_verify`, data);
+  },
+
+  etsyTokenApply(data) {
+    return Axios.post(`${API_ENDPOINT}/connections/etsy/token_apply`, data);
+  },
+
+  downloadCsv(data) {
+    return Axios.post(`${API_ENDPOINT}/connections/backup/csv`, data);
+  },
+
+  updateSettings(data) {
+    return Axios.post(`${API_ENDPOINT}/settings/update`, data);
+  },
+
+  getSettings(data) {
+    return Axios.post(`${API_ENDPOINT}/settings/read`, data);
+  },
 };
