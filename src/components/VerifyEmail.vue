@@ -11,18 +11,21 @@
         <b-container fluid>
           <b-row class="my-1">
             <p>
-              Please go to your email address and click on verify my email link.
+              Please go to your email and click on verify link.
             </p>
           </b-row>
         </b-container>
-        <b-button to="/verifyemail" variant="secondary">Resend Email</b-button>
-        <b-button to="/connections" variant="danger">OK</b-button>
+        <b-button v-on:click="resentEmail" variant="secondary">Resend Verification Email</b-button>
+        <b-button to="/connections" variant="danger">I have Verified My Account</b-button>
       </b-card>
     </b-row>
   </div>
 </template>
 
 <script>
+import Cookies from 'js-cookie';
+import xeConnectorApiService from '@/api-services/xeConnectorApiService';
+
 export default {
   name: 'VerifyEmail',
   data() {
@@ -30,6 +33,20 @@ export default {
       types: [
       ],
     };
+  },
+  methods: {
+    resentEmail(event) {
+      if (event) {
+        xeConnectorApiService.userEmailVerification(this.form).then((response) => {
+          // eslint-disable-next-line
+          console.log(response.data);
+        }).catch((error) => {
+          // eslint-disable-next-line
+          console.log(error.data);
+        });
+        Cookies.get('ex_session_id');
+      }
+    },
   },
 };
 </script>

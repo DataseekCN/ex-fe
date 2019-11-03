@@ -11,6 +11,10 @@ export default {
     return Axios.post(`${API_ENDPOINT}/user/signup`, data);
   },
 
+  userEmailVerification(data) {
+    return Axios.post(`${API_ENDPOINT}/user/emailverification`, data);
+  },
+
   userResetPassword(data) {
     return Axios.post(`${API_ENDPOINT}/user/resetpassword`, data);
   },
