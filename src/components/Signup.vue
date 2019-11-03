@@ -98,7 +98,7 @@ export default {
         xeConnectorApiService.userSignup(this.form).then((response) => {
           // eslint-disable-next-line
           console.log(response.data);
-          if (this.response.data.status === 'success' && this.response.data.user_id != null) {
+          if (response.data.status === 'success' && response.data.user_id !== null) {
             // eslint-disable-next-line
             console.log(response.data.status + '|' + response.data.user_id);
 
@@ -108,7 +108,7 @@ export default {
             // redirect to verify email page
             this.$router.push('VerifyEmail');
           } else {
-            this.alertMessage = this.response.data.error_message;
+            this.alertMessage = response.data.error_message;
             this.signupFailed = true;
           }
         }).catch((error) => {

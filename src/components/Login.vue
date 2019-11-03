@@ -27,7 +27,7 @@
               <label for="input-invalid">Password:</label>
             </b-col>
             <b-col sm="9">
-              <b-form-input id="input-password" v-model="form.password" required></b-form-input>
+              <b-form-input type="password" id="input-password" v-model="form.password" required></b-form-input>
             </b-col>
           </b-row>
         </b-container>
@@ -65,20 +65,24 @@ export default {
         xeConnectorApiService.userSignin(this.form).then((response) => {
           // eslint-disable-next-line
           console.log(response.data);
-          if (this.response.data.status === 'success' && this.response.data.user_session_id != null) {
+          if (response.data.status === 'success' && response.data.user_session_id !== null) {
             // eslint-disable-next-line
             console.log(response.data.status + '|' + response.data.user_session_id);
             // todo: store session ID in cookie
-            Cookies.set('ex_session_id', this.response.data.user_session_id);
-            this.$router.push('Dashboard');
+            Cookies.set('ex_session_id', response.data.user_session_id);
+            if (response.data.verfied === 'true') {
+              this.$router.push('Dashboard');
+            } else {
+              this.$router.push('VerifyEmail');
+            }
           } else {
-            this.alertMessage = this.response.data.error_message;
+            this.alertMessage = response.data.error_message;
             this.loginFailed = true;
           }
         }).catch((error) => {
           // eslint-disable-next-line
           console.log(error.data);
-          this.alertMessage = 'Login failed due to backend issue.';
+          this.alertMessage = 'Login failed due to backend issue...';
           this.loginFailed = true;
         });
       }
