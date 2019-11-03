@@ -16,6 +16,7 @@
 
           <div id="step1-connections"
             v-if="step === 1">
+
             <h1 class="display-3">Connnections</h1>
             <p class="lead">Connect your Etsy and Xero accounts to authorise EX Sync</p>
             <b-row class="justify-content-center">
