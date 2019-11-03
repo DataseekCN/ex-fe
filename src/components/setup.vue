@@ -2,17 +2,20 @@
   <div>
     <b-row>
       <b-col>
-        <NavBar/>
+        <NavBar />
       </b-col>
     </b-row>
     <b-row class="my-1">
       <b-col>
         <div class="jumbotron">
-          <div class="alert alert-danger" role="alert" v-if="submitFailed">
+          <div class="alert alert-danger"
+            role="alert"
+            v-if="submitFailed">
             {{ alertMessage }}
           </div>
-          
-          <div id="step1-connections" v-if="step === 1">
+
+          <div id="step1-connections"
+            v-if="step === 1">
             <h1 class="display-3">Connnections</h1>
             <p class="lead">Connect your Etsy and Xero accounts to authorise EX Sync</p>
             <b-row class="justify-content-center">
@@ -21,24 +24,22 @@
                   <div class="card-body">
                     <h4 class="card-title">Etsy Connection</h4>
                     <p class="card-text">Connect to your Etsy account and authorise EX Sync</p>
-                    <button
-                      type="button"
+                    <button type="button"
                       id="etsy-con-btn"
                       class="btn btn-primary"
                       btn-lg
                       btn-block
-                      v-if="etsyConnection !== true"
-                    >Connect to Etsy</button>
-                    <button
-                      type="button"
+                      v-if="etsyConnection !== true">Connect to Etsy</button>
+                    <button type="button"
                       id="etsy-con-btn"
                       class="btn btn-success"
                       btn-lg
                       btn-block
-                      v-if="etsyConnection === true"
-                    >Connected</button>
-                    <a class="text-success" v-if="etsyConnection === true">&#10004;</a>
-                    <a class="text-danger" v-if="etsyConnection === false">&#10007;</a> 
+                      v-if="etsyConnection === true">Connected</button>
+                    <a class="text-success"
+                      v-if="etsyConnection === true">&#10004;</a>
+                    <a class="text-danger"
+                      v-if="etsyConnection === false">&#10007;</a>
                   </div>
                 </div>
               </b-col>
@@ -46,90 +47,88 @@
                 <div class="card text-left">
                   <div class="card-body">
                     <h4 class="card-title">Xero Connection</h4>
-                    <p
-                      class="card-text"
-                    >Connect to your Xero account and authorise your organisation to EX Sync</p>
-                    <button
-                      type="button"
+                    <p class="card-text">Connect to your Xero account and authorise your organisation to EX Sync</p>
+                    <button type="button"
                       id="xero-con-btn"
                       class="btn btn-primary"
                       btn-lg
                       btn-block
-                      v-if="xeroConnection !== true"
-                    >Connect to Xero</button>
-                    <button
-                      type="button"
+                      v-if="xeroConnection !== true">Connect to Xero</button>
+                    <button type="button"
                       id="etsy-con-btn"
                       class="btn btn-success"
                       btn-lg
                       btn-block
-                      v-if="xeroConnection === true"
-                    >Connected</button>
-                    <a class="text-success" v-if="xeroConnection === true">&#10004;</a>
-                    <a class="text-danger" v-if="xeroConnection === false">&#10007;</a>                  </div>
+                      v-if="xeroConnection === true">Connected</button>
+                    <a class="text-success"
+                      v-if="xeroConnection === true">&#10004;</a>
+                    <a class="text-danger"
+                      v-if="xeroConnection === false">&#10007;</a>
+                  </div>
                 </div>
               </b-col>
             </b-row>
           </div>
 
-          <div id="step2-setup" v-if="step === 2">
+          <div id="step2-setup"
+            v-if="step === 2">
             <h1 class="display-3">Setup</h1>
             <p class="lead"></p>
             <b-row class="justify-content-center">
               <b-col class="col-12">
                 <b-row class="my-3">
                   <b-col class="col-3  text-right">
-                  <label for="input-etsy-shopname">Etsy Shop Name: </label>
+                    <label for="input-etsy-shopname">Etsy Shop Name: </label>
                   </b-col>
                   <b-col class="col-6">
-                  <input type="text"
-                  id="input-etsy-shopname"
-                  class="form-control" 
-                  placeholder="enter your Etsy shop name"
-                  v-model="form.etsyShopName"
-                  v-on:blur="checkShopName"
-                  >
+                    <input type="text"
+                      id="input-etsy-shopname"
+                      class="form-control"
+                      placeholder="enter your Etsy shop name"
+                      v-model="form.etsyShopName"
+                      v-on:blur="checkShopName">
                   </b-col>
                   <b-col class="col-1">
-                    <div class="text-success" v-if="shopNameValid === true">&#10004;</div>
-                    <div class="text-danger" v-if="shopNameValid === false">&#10007;</div>
+                    <div class="text-success"
+                      v-if="shopNameValid === true">&#10004;</div>
+                    <div class="text-danger"
+                      v-if="shopNameValid === false">&#10007;</div>
                   </b-col>
                 </b-row>
 
                 <b-row class="my-3">
                   <b-col class="col-3  text-right">
-                  <label for="input-sync-from-date">Sync Data From: </label>
+                    <label for="input-sync-from-date">Sync Data From: </label>
                   </b-col>
                   <b-col class="col-6">
-                  <input type="date"
-                  id="input-sync-from-date"
-                  class="form-control" 
-                  placeholder="enter the date you would like data to sync from e.g. begining of this financial year"
-                  v-model="form.syncFromDate"
-                  >
+                    <input type="date"
+                      id="input-sync-from-date"
+                      class="form-control"
+                      placeholder="enter the date you would like data to sync from e.g. begining of this financial year"
+                      v-model="form.syncFromDate">
                   </b-col>
                   <b-col class="col-1">
-                    <div class="text-success" v-if="form.syncFromDate !== ''">&#10004;</div>
+                    <div class="text-success"
+                      v-if="form.syncFromDate !== ''">&#10004;</div>
                   </b-col>
                 </b-row>
 
                 <b-row class="my-3">
                   <b-col class="col-3 text-right">
-                  <label for="checkbox-customerInfoHandle">Customer information:</label>
+                    <label for="checkbox-customerInfoHandle">Customer information:</label>
                   </b-col>
                   <b-col class="col-6 text-left">
-                    <b-form-checkbox
-                      id="checkbox-customerInfoHandle"
+                    <b-form-checkbox id="checkbox-customerInfoHandle"
                       v-model="form.customerInfoHandle"
                       name="checkbox-customerInfoHandle"
                       value="true"
-                      unchecked-value="false"
-                    >
+                      unchecked-value="false">
                       sync name, contact and addresss with Xero contacts.
                     </b-form-checkbox>
                   </b-col>
                   <b-col class="col-1">
-                    <div class="text-success" v-if="form.customerInfoHandle !== null">&#10004;</div>
+                    <div class="text-success"
+                      v-if="form.customerInfoHandle !== null">&#10004;</div>
                   </b-col>
                 </b-row>
 
@@ -139,21 +138,20 @@
 
                 <b-row class="my-3">
                   <b-col class="col-3 text-right">
-                  <label for="checkbox-listingInfoHandle">Listing information:</label>
+                    <label for="checkbox-listingInfoHandle">Listing information:</label>
                   </b-col>
                   <b-col class="col-6 text-left">
-                    <b-form-checkbox
-                      id="checkbox-listingInfoHandle"
+                    <b-form-checkbox id="checkbox-listingInfoHandle"
                       v-model="form.listingInfoHandle"
                       name="checkbox-listingInfoHandle"
                       value="true"
-                      unchecked-value="false"
-                    >
+                      unchecked-value="false">
                       sync listing title, description and price with Xero items.
                     </b-form-checkbox>
                   </b-col>
                   <b-col class="col-1">
-                    <div class="text-success" v-if="form.listingInfoHandle !== null">&#10004;</div>
+                    <div class="text-success"
+                      v-if="form.listingInfoHandle !== null">&#10004;</div>
                   </b-col>
                 </b-row>
 
@@ -161,7 +159,8 @@
             </b-row>
           </div>
 
-          <div id="step3-subscription" v-if="step === 3">
+          <div id="step3-subscription"
+            v-if="step === 3">
             <h1 class="display-3">Subscription</h1>
             <p class="lead"></p>
             <b-row class="justify-content-center my-3">
@@ -186,7 +185,9 @@
                     <p>
                       $10 / month
                     </p>
-                    <b-button href="#" variant="primary" v-on:click="subscriptionPlan = 'Business'">select</b-button>
+                    <b-button href="#"
+                      variant="primary"
+                      v-on:click="subscriptionPlan = 'Business'">select</b-button>
                   </div>
                 </div>
               </b-col>
@@ -211,7 +212,9 @@
                     <p>
                       $10 / month
                     </p>
-                    <b-button href="#" variant="primary" v-on:click="subscriptionPlan = 'Lite'">select</b-button>
+                    <b-button href="#"
+                      variant="primary"
+                      v-on:click="subscriptionPlan = 'Lite'">select</b-button>
                   </div>
                 </div>
               </b-col>
@@ -236,7 +239,9 @@
                     <p>
                       $99 / year
                     </p>
-                    <b-button href="#" variant="primary" v-on:click="subscriptionPlan = 'Longterm'">select</b-button>
+                    <b-button href="#"
+                      variant="primary"
+                      v-on:click="subscriptionPlan = 'Longterm'">select</b-button>
                   </div>
                 </div>
               </b-col>
@@ -250,7 +255,9 @@
                     <p>
                       $10 / year
                     </p>
-                    <b-button href="#" variant="primary" v-on:click="backupOption = '1'">select</b-button>
+                    <b-button href="#"
+                      variant="primary"
+                      v-on:click="backupOption = '1'">select</b-button>
                   </div>
                 </div>
               </b-col>
@@ -261,14 +268,17 @@
                     <p>
                       $50 / year
                     </p>
-                    <b-button href="#" variant="primary" v-on:click="backupOption = '7'">select</b-button>
+                    <b-button href="#"
+                      variant="primary"
+                      v-on:click="backupOption = '7'">select</b-button>
                   </div>
                 </div>
               </b-col>
             </b-row>
           </div>
 
-          <div id="step4-billing" v-if="step === 4">
+          <div id="step4-billing"
+            v-if="step === 4">
             <h1 class="display-3">Billing</h1>
             <p class="lead"></p>
             <b-row class="justify-content-center">
@@ -276,22 +286,35 @@
             </b-row>
           </div>
 
-          <div id="step5-complete" v-if="step === 5">
+          <div id="step5-complete"
+            v-if="step === 5">
             <h1 class="display-3">Setup Completed</h1>
             <p class="lead">your sync will start shortly, you will be redirected to </p>
             <b-row class="justify-content-center">
               <b-col class="col-12">
-                <b-button href="#" variant="success" v-on:click="submitSetupForm">Start data Sync</b-button>
+                <b-button href="#"
+                  variant="success"
+                  v-on:click="submitSetupForm">Start data Sync</b-button>
               </b-col>
             </b-row>
           </div>
 
           <b-row class="my-3 justify-content-between">
             <b-col class="col-4">
-              <button type="button" class="btn btn-secondary" btn-lg btn-block v-if="step !== 1" v-on:click="prev">Previous</button>
+              <button type="button"
+                class="btn btn-secondary"
+                btn-lg
+                btn-block
+                v-if="step !== 1"
+                v-on:click="prev">Previous</button>
             </b-col>
             <b-col class="col-4">
-              <button type="button" class="btn btn-secondary" btn-lg btn-block v-if="step !== 5" v-on:click="next">Next</button>
+              <button type="button"
+                class="btn btn-secondary"
+                btn-lg
+                btn-block
+                v-if="step !== 5"
+                v-on:click="next">Next</button>
             </b-col>
           </b-row>
         </div>
@@ -339,9 +362,7 @@ export default {
       alertMessage: '',
     };
   },
-  create: {
-
-  },
+  create: {},
   methods: {
     prev() {
       this.step = this.step - 1;
@@ -350,23 +371,31 @@ export default {
       this.step = this.step + 1;
     },
     checkShopName(event) {
+      debugger;
       if (event) {
-        xeConnectorApiService.checkEtsyShopName(this.form.etsyShopName.toLowerCase().replace(/\s/g, '')).then((response) => {
-          if (response.data.status === 'success') {
-            // shop is found in etsy
-            this.shopNameValid = true;
-            this.form.etsyShopName = this.form.etsyShopName.toLowerCase().replace(/\s/g, '');
-          } else {
-            // shop cannot be found
+        xeConnectorApiService
+          .checkEtsyShopName(
+            this.form.etsyShopName.toLowerCase().replace(/\s/g, ''),
+          )
+          .then((response) => {
+            if (response.data.status === 'success') {
+              // shop is found in etsy
+              this.shopNameValid = true;
+              this.form.etsyShopName = this.form.etsyShopName
+                .toLowerCase()
+                .replace(/\s/g, '');
+            } else {
+              // shop cannot be found
+              this.shopNameValid = false;
+            }
+          })
+          .catch((error) => {
             this.shopNameValid = false;
-          }
-        }).catch((error) => {
-          this.shopNameValid = false;
-          // eslint-disable-next-line
-          console.log(error.data);
-          this.alertMessage = 'Shop is not able to be found on Etsy...';
-          this.submitFailed = true;
-        });
+            // eslint-disable-next-line
+            console.log(error.data);
+            this.alertMessage = 'Shop is not able to be found on Etsy...';
+            this.submitFailed = true;
+          });
       }
     },
     getXeroAccounts(event) {
@@ -379,6 +408,9 @@ export default {
         // xeConnectorApiService.submitSetupForm
       }
     },
+  },
+  mounted() {
+    this.checkShopName();
   },
 };
 </script>
