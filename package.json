@@ -22,7 +22,6 @@
     "vue-credit-card-field": "^0.3.14",
     "element-ui": "^2.12.0",
     "font-awesome": "^4.7.0",
-    "js-cookie": "^2.2.1",
     "pc-bootstrap4-datetimepicker": "^4.17.50",
     "vue-bootstrap-datetimepicker": "^5.0.1",
     "vue-router": "^3.0.7"

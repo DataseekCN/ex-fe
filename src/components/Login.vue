@@ -15,32 +15,6 @@
             v-if="loginFailed">
             {{ alertMessage }}
           </div>
-          <b-col>
-            <b-row class="email">
-              <b-col sm="1"></b-col>
-              <b-col sm="10"
-                style="width:300px; magin-bottom:20px">
-                <b-form-input id=" input input-email"
-                  placeholder="Your Email Address"
-                  v-model="form.email"
-                  required></b-form-input>
-              </b-col>
-              <b-col sm="1"></b-col>
-            </b-row>
-            <div class="clearfix"
-              style="margin-bottom: 10px;"></div>
-            <b-row class="passwd">
-              <b-col sm="1"></b-col>
-              <b-col sm="10"
-                style="width:300px">
-                <b-form-input id="input input-password"
-                  placeholder="Your Password"
-                  v-model="form.password"
-                  required></b-form-input>
-              </b-col>
-              <b-col sm="1"></b-col>
-            </b-row>
-          </b-col>
 
           <b-row class="my-1">
             <b-col sm="3">
@@ -108,29 +82,37 @@ export default {
       if (event) {
         // eslint-disable-next-line
         console.log(this.form);
-        xeConnectorApiService.userSignin(this.form).then((response) => {
-          // eslint-disable-next-line
-          console.log(response.data);
-          if (response.data.status === 'success' && response.data.user_session_id !== null) {
+        xeConnectorApiService
+          .userSignin(this.form)
+          .then((response) => {
             // eslint-disable-next-line
-            console.log(response.data.status + '|' + response.data.user_session_id);
-            // todo: store session ID in cookie
-            Cookies.set('ex_session_id', response.data.user_session_id);
-            if (response.data.verfied === 'true') {
-              this.$router.push('Dashboard');
+            console.log(response.data);
+            if (
+              response.data.status === 'success' &&
+              response.data.user_session_id !== null
+            ) {
+              // eslint-disable-next-line
+              console.log(
+                `${response.data.status}|${response.data.user_session_id}`,
+              );
+              // todo: store session ID in cookie
+              Cookies.set('ex_session_id', response.data.user_session_id);
+              if (response.data.verfied === 'true') {
+                this.$router.push('Dashboard');
+              } else {
+                this.$router.push('VerifyEmail');
+              }
             } else {
-              this.$router.push('VerifyEmail');
+              this.alertMessage = response.data.error_message;
+              this.loginFailed = true;
             }
-          } else {
-            this.alertMessage = response.data.error_message;
+          })
+          .catch((error) => {
+            // eslint-disable-next-line
+            console.log(error.data);
+            this.alertMessage = 'Login failed due to backend issue...';
             this.loginFailed = true;
-          }
-        }).catch((error) => {
-          // eslint-disable-next-line
-          console.log(error.data);
-          this.alertMessage = 'Login failed due to backend issue...';
-          this.loginFailed = true;
-        });
+          });
       }
     },
   },
