@@ -4,6 +4,8 @@ import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.min.css';
+import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
 import App from './App';
@@ -21,5 +23,7 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App },
+  components: {
+    App,
+  },
 });

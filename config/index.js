@@ -25,15 +25,15 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 8888,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api_getShopInfo':{
+      '/api_getShopInfo': {
         target: 'https://openapi.etsy.com/v2',
         changeOrigin: true,
-        pathRewrite:{
+        pathRewrite: {
           '^/api_getShopInfo': ''
         }
       }

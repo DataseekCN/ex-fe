@@ -9,56 +9,68 @@ import VerifyEmail from '@/components/VerifyEmail';
 import Setup from '@/components/Setup';
 import Backups from '@/components/Backups';
 import Settings from '@/components/Settings';
+import SyncLogs from '@/components/SyncLogs';
+import Subscription from '@/components/Subscription';
+
 
 Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'Login',
-      component: Login,
-    },
-    {
-      path: '/signup',
-      name: 'Signup',
-      component: Signup,
-    },
-    {
-      path: '/resetpassword',
-      name: 'ResetPassword',
-      component: ResetPassword,
-    },
-    {
-      path: '/verifyemail',
-      name: 'VerifyEmail',
-      component: VerifyEmail,
-    },
-    {
-      path: '/connections',
-      name: 'Connections',
-      component: Connections,
-    },
-    {
-      path: '/dashboard',
-      name: 'Dashboard',
-      component: Dashboard,
-    },
-    {
-      path: '/setup',
-      name: 'Setup',
-      component: Setup,
-    },
-    {
-      path: '/backups',
-      name: 'Backups',
-      component: Backups,
-    },
-    {
-      path: '/settings',
-      name: 'Settings',
-      component: Settings,
-    },
+  routes: [{
+    path: '/',
+    name: 'Login',
+    component: Login,
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup,
+  },
+  {
+    path: '/resetpassword',
+    name: 'ResetPassword',
+    component: ResetPassword,
+  },
+  {
+    path: '/verifyemail',
+    name: 'VerifyEmail',
+    component: VerifyEmail,
+  },
+  {
+    path: '/connections',
+    name: 'Connections',
+    component: Connections,
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+  },
+  {
+    path: '/setup',
+    name: 'Setup',
+    component: Setup,
+  },
+  {
+    path: '/backups',
+    name: 'Backups',
+    component: Backups,
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings,
+  },
+  {
+    path: '/synclogs',
+    name: 'SyncLogs',
+    component: SyncLogs,
+  },
+  {
+    path: '/subscription',
+    name: 'Subscription',
+    component: Subscription,
+  },
   ],
 });

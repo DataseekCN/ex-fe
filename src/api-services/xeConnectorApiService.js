@@ -3,10 +3,13 @@ import Axios from 'axios';
 const API_ENDPOINT = 'http://13.236.146.10:12006';
 
 export default {
+
+  // 用户登陆
   userSignin(data) {
     return Axios.post(`${API_ENDPOINT}/user/signin`, data);
   },
 
+  // 用户注册
   userSignup(data) {
     return Axios.post(`${API_ENDPOINT}/user/signup`, data);
   },
@@ -27,10 +30,12 @@ export default {
     return Axios.get(`${API_ENDPOINT}/user/signupemailverification`, data);
   },
 
+  // 验证商店名称
   checkEtsyShopName(data) {
     return Axios.post(`${API_ENDPOINT}/setup/etzy/verifyshopname`, data);
   },
 
+  // 设置xero账号
   getXeroAccounts(data) {
     return Axios.post(`${API_ENDPOINT}/setup/xero/accounts`, data);
   },

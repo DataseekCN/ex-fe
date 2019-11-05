@@ -1,0 +1,31 @@
+<template>
+  <div class="container">
+    <nav-bar></nav-bar>
+    <sider-bar></sider-bar>
+    <main-content></main-content>
+  </div>
+</template>
+<script>
+import NavBar from '@/components/NavBar';
+import SiderBar from '@/components/SideBar';
+import MainContent from '@/components/MainContent';
+
+export default {
+  name: 'Home',
+  components: {
+    NavBar,
+    SiderBar,
+    MainContent,
+  },
+};
+</script>
+<style scoped>
+.container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(224, 234, 235, 0.1);
+}
+</style>

@@ -1,24 +1,56 @@
 <template>
   <div>
     <b-row>
-      <b-card
-        title="EX Sync Login"
+      <b-card bg-variant="light"
         tag="article"
-        style="max-width: 40rem;"
-        class="mb-2 mx-auto"
-        id="login-box"
-      >
+        style="max-width: 40%; "
+        class="mb-2 mx-auto text-center"
+        id="login-box">
+        <b-col class="login-title">
+          <span><b>EX Sync Login</b></span>
+        </b-col>
         <b-container fluid>
-          <div class="alert alert-danger" role="alert" v-if="loginFailed">
+          <div class="alert alert-danger"
+            role="alert"
+            v-if="loginFailed">
             {{ alertMessage }}
           </div>
+          <b-col>
+            <b-row class="email">
+              <b-col sm="1"></b-col>
+              <b-col sm="10"
+                style="width:300px; magin-bottom:20px">
+                <b-form-input id=" input input-email"
+                  placeholder="Your Email Address"
+                  v-model="form.email"
+                  required></b-form-input>
+              </b-col>
+              <b-col sm="1"></b-col>
+            </b-row>
+            <div class="clearfix"
+              style="margin-bottom: 10px;"></div>
+            <b-row class="passwd">
+              <b-col sm="1"></b-col>
+              <b-col sm="10"
+                style="width:300px">
+                <b-form-input id="input input-password"
+                  placeholder="Your Password"
+                  v-model="form.password"
+                  required></b-form-input>
+              </b-col>
+              <b-col sm="1"></b-col>
+            </b-row>
+          </b-col>
 
           <b-row class="my-1">
             <b-col sm="3">
               <label for="input-valid">Email: </label>
             </b-col>
             <b-col sm="9">
-              <b-form-input id="input-email" placeholder="Your Email Address" v-model="form.email" required></b-form-input>
+              <b-form-input id="input-email"
+                placeholder="Your Email Address"
+                v-model="form.email"
+                required></b-form-input>
             </b-col>
           </b-row>
 
@@ -27,16 +59,30 @@
               <label for="input-invalid">Password:</label>
             </b-col>
             <b-col sm="9">
-              <b-form-input type="password" id="input-password" v-model="form.password" required></b-form-input>
+              <b-form-input type="password"
+                id="input-password"
+                v-model="form.password"
+                required></b-form-input>
             </b-col>
           </b-row>
         </b-container>
-        <b-button id="signin-btn" href="#" variant="success" v-on:click="userSignin">Sign In</b-button>
-        <b-button id="signup-btn" to="/signup" variant="secondary">Sign Up</b-button>
+
+        <!-- 操作按钮 -->
+        <b-col bg-variant="light"
+          id="btn-card">
+          <b-button id="signin-btn"
+            href="#"
+            variant="success"
+            v-on:click="userSignin">Sign In</b-button>
+          <b-button id="signup-btn"
+            to="/signup"
+            variant="secondary">Sign Up</b-button>
+        </b-col>
       </b-card>
     </b-row>
     <b-row>
-      <a class="mx-auto" href="/resetpassword">Reset Passwords</a>
+      <a class="mx-auto"
+        href="/resetpassword">Reset Passwords</a>
     </b-row>
   </div>
 </template>
@@ -93,8 +139,37 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.login-title {
+  background-color: lightgray;
+  text-align: center;
+  font-size: 30px;
+  font-style: italic;
+  margin: 0px 0px 20px 0px;
+  border-bottom: 2px solid lightseagreen;
+}
 #login-box {
   margin-top: 70px;
   margin-bottom: 70px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  /* background-color:lightgray; */
+}
+#btn-card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.check-passwd {
+  padding-left: 36px;
+}
+
+#signin-btn {
+  margin-right: 10px;
+}
+
+#signup-btn {
+  margin-left: 20px;
 }
 </style>
