@@ -13,8 +13,8 @@
           class="list-group-item list-group-item-action bg-light">SyncLogs</a>
         <a href="/Subscription"
           class="list-group-item list-group-item-action bg-light">Subscription</a>
-        <a href="#"
-          class="list-group-item list-group-item-action bg-light">-</a>
+        <a href="/Settings"
+          class="list-group-item list-group-item-action bg-light">Settings</a>
         <a href="#"
           class="list-group-item list-group-item-action bg-light">-</a>
         <a href="#"

@@ -1,26 +1,10 @@
 <template>
   <div>
-    <b-row>
-      <b-col>
-        <NavBar />
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col class="col-auto">
-        <SideBar />
-      </b-col>
-      <b-col class="col-10"
-        style="margin-left:50px; text-align:center">
-        <con-info :data="connections"></con-info>
-
-      </b-col>
-    </b-row>
+    <con-info :data="connections"></con-info>
   </div>
 </template>
 
 <script>
-import NavBar from '@/components/NavBar';
-import SideBar from '@/components/SideBar';
 import conInfo from '@/components/core/ConInfo';
 import Cookies from 'js-cookie';
 import xeConnectorApiService from '@/api-services/xeConnectorApiService';
@@ -28,8 +12,6 @@ import xeConnectorApiService from '@/api-services/xeConnectorApiService';
 export default {
   name: 'connections',
   components: {
-    NavBar,
-    SideBar,
     conInfo,
   },
   data() {
@@ -55,6 +37,7 @@ export default {
   },
   methods: {
     getAllConnections() {
+      debugger;
       const sessionId = Cookies.get('session_id');
       xeConnectorApiService.getAllConnections(sessionId).then((response) => {
         if (response.status === '200') {
@@ -62,6 +45,9 @@ export default {
         }
       });
     },
+  },
+  mounted() {
+    this.getAllConnections();
   },
 };
 </script>

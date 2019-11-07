@@ -1,14 +1,6 @@
 <template>
   <div>
     <b-row>
-      <b-col>
-        <NavBar />
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col class="col-auto">
-        <SideBar />
-      </b-col>
       <div class="col-10"
         style="margin-left:50px; margin-top:20px; text-align:center">
         <div class="col-12 logs"
@@ -23,8 +15,6 @@
   </div>
 </template>
 <script>
-import NavBar from '@/components/NavBar';
-import SideBar from '@/components/SideBar';
 import Log from '@/components/core/Log';
 import Cookies from 'js-cookie';
 import xeConnectorApiService from '@/api-services/xeConnectorApiService';
@@ -32,8 +22,6 @@ import xeConnectorApiService from '@/api-services/xeConnectorApiService';
 export default {
   name: 'SyncLogs',
   components: {
-    NavBar,
-    SideBar,
     Log,
   },
   data() {

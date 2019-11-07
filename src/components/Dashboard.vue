@@ -1,14 +1,6 @@
 <template>
   <div>
     <b-row>
-      <b-col>
-        <NavBar />
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col class="col-auto">
-        <SideBar />
-      </b-col>
       <b-col class="col-10">
         <b-row style="margin:10px;">
           <b-container fluid>
@@ -48,8 +40,6 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar';
-import SideBar from '@/components/SideBar';
 import TableCard from '@/components/core/TableCard';
 import Cookies from 'js-cookie';
 import xeConnectorApiService from '@/api-services/xeConnectorApiService';
@@ -57,8 +47,6 @@ import xeConnectorApiService from '@/api-services/xeConnectorApiService';
 export default {
   name: 'Dashboard',
   components: {
-    NavBar,
-    SideBar,
     TableCard,
   },
   created() {},

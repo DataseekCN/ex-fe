@@ -59,4 +59,7 @@ export default {
   getSettings(data) {
     return Axios.post(`${API_ENDPOINT}/settings/read`, data);
   },
+
+
+  // connections 信息
 };
